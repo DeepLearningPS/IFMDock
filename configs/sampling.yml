@@ -1,0 +1,140 @@
+model:
+  #policy_ckpt: 'logs_diffusion/training_2024_01_12__23_43_11/checkpoints/802000.pt'   # retrained targetdiff
+  #value_ckpt: 'logs_diffusion/training_2024_01_12__23_43_11/checkpoints/802000.pt'
+  #joint_ckpt: 'logs_diffusion/training_2024_01_12__23_43_11/checkpoints/802000.pt'   # KGDiffDock(ˆh0)
+  # joint_ckpt: './logs_diffusion/training_2023_07_05__12_15_55/checkpoints/1076000.pt' # KGDiffDock(h_0, P)
+  #pdbbind_random: 'logs_diffusion/training_2024_01_12__23_43_11/checkpoints/802000.pt'  
+  #logs_diffusion/training_2024_01_12__23_43_11/checkpoints/1000.pt
+  #/home/bingxing2/home/scx6266/MDocking/KGDiff-Docking/logs_diffusion/training_2024_01_12__23_43_11/checkpoints/802000.pt
+
+  
+  policy_ckpt: 'logs_diffusion/training_2024_01_22__19_57_5/checkpoints/131000.pt'   # retrained targetdiff
+  value_ckpt: 'logs_diffusion/training_2024_01_22__19_57_5/checkpoints/131000.pt'
+  joint_ckpt: 'logs_diffusion/training_2024_01_22__19_57_5/checkpoints/131000.pt'   # KGDiffDock(ˆh0)
+  # joint_ckpt: './logs_diffusion/training_2023_07_05__12_15_55/checkpoints/1076000.pt' # KGDiffDock(h_0, P)
+
+
+  #equiformer 150step,
+
+  #从头连续训练25步
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/equiformer_step150training_2024_04_19__01_38_57/checkpoints/final.pt' 
+  
+  
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/equiformer_step25training_2024_04_16__04_24_33/checkpoints/final.pt' #equiformer
+  
+  #加噪前缩放
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/egnn_step150training_2024_04_16__19_55_32/checkpoints/final.pt' #egnn 150step
+
+
+  #加噪后缩放
+  ##egnn xyz_noise scale
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/egnn_step150_all_noisetraining_2024_04_17__01_51_23/checkpoints/final.pt' 
+
+  #加噪后缩放
+  #egnn xyz, pred_ligand_noise scale
+
+  #连续25步，EGNN存在溢出问题，损失异常；去掉第1,2步后再训练，损失也出现异常过大问题
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/egnn_step150training_2024_04_19__01_40_01/checkpoints/final.pt'
+  
+  
+  #在ground pos knn训练150步的基础上，再训练ground pos连续的25步，有一定的效果.能训练出来
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/egnn_25step_ground_knntraining_2024_04_19__10_51_36/checkpoints/final.pt'
+
+
+  #在ground pos knn训练150步的基础上，再训练连续的25步，不使用ground pos，有一定的效果？
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/egnn_25stepnew_training_2024_04_19__20_01_07/checkpoints/final.pt'
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/egnn_skip_25step_Not_ground_knn_training_2024_04_20__01_44_52/checkpoints/final.pt'
+
+
+  #在在ground pos knn上训练150步，训练损失在下降，但是采样的结果却是爆炸的，啥也不是
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/egnn_step150_ground_knntraining_2024_04_18__00_52_08/checkpoints/final.pt'
+
+
+  #在150步的基础上，再进行连续的25步训练，会出现溢出问题，损失异常
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/egnn_step150_new_scaletraining_2024_04_18__17_17_24/checkpoints/125000.pt'
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/egnn_step150_new_scaletraining_2024_04_17__11_30_56/checkpoints/final.pt'
+
+
+  #在150步的基础上，再进行skip25步训练
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/egnn_25stepnew_skip_training_2024_04_20__00_10_29/checkpoints/final.pt'
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/egnn_skip_25step_training_2024_04_20__01_44_45/checkpoints/final.pt'
+  
+  #equiformer
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/equiformer_skip_25step_training_2024_04_20__04_04_09/checkpoints/final.pt'
+
+
+  # 在120000步的基础上，继续25步
+  #node71
+  #pdbbind_random: '/home/bingxing2/home/scx6266/MDocking/new_KGDiff-EcDock/logs_diffusion/egnn_skip_25step_training_2024_04_20__01_44_45/checkpoints/128000.pt'
+
+  #多卡，连续25step,并行的测试 
+
+  # CM + EGNN
+  #pdbbind_random: '/mnt/home/fanzhiguang/47/new_KGDiff-EcDock/logs_diffusion/CM_egnn_skip_50step_epoch52/checkpoints/final.pt'
+
+  # CM + equiformer,
+  #有信息泄露的
+  #pdbbind_random: '/mnt/home/fanzhiguang/47/new_KGDiff-EcDock/logs_diffusion/CM_equiformer_dim8/checkpoints/final.pt'
+
+  # unimol distance微调
+  #pdbbind_random: '/mnt/home/fanzhiguang/47/new_KGDiff-EcDock/test_premodel/CM_equiformer_continue_50_interaction_unimol_finetuning_leak/final.pt'
+  #效果差的原因是啥？数据的形成？
+
+  #5.5ai距离微调 提升%2， rate = 52%
+  #pdbbind_random: '/mnt/home/fanzhiguang/47/new_KGDiff-EcDock/test_premodel/finetuning_5.5ai/final.pt'
+  #6.5
+  #pdbbind_random: '/mnt/home/fanzhiguang/47/new_KGDiff-EcDock/test_premodel/finetuning_6.5ai/final.pt'
+
+  # 重新训练
+  #pdbbind_random: '/mnt/home/fanzhiguang/47/new_KGDiff-EcDock/test_premodel/CM_equiformer_continue_50_interaction_unimol_retrain_training/final.pt'
+
+  #pdbbind_random: '/mnt/home/fanzhiguang/47/new_KGDiff-EcDock/test_premodel/noise/final.pt'
+  #pdbbind_random: '/mnt/home/fanzhiguang/47/new_KGDiff-EcDock/test_premodel/origin/80.pt'
+  #pdbbind_random: '/mnt/home/fanzhiguang/47/new_KGDiff-EcDock/logs_diffusion/CM_equiformer_dim16/final.pt'
+
+  #从新训练, 以3.5距离为分割
+  #pdbbind_random: 'test_premodel/CM_equiformer_3.5/rate_307.pt' #236/242/243/250/252/255/257/277/286/307 #286无法复现结果，啥情况？是不是数据换了导致的？
+
+  # 不限制原子类型
+  pdbbind_random: 'test_premodel/all_atom_ecdock/rate_188.pt'
+
+  #不使用距离矩阵约束
+  #pdbbind_random: 'test_premodel/not_distance_ecdock/final.pt'
+
+  # 3D Embedding
+  #pdbbind_random: 'logs_diffusion/CM_equiformer_3.5ai_CMV2_unimol_distance_add_truthpos_step5_3Dembedding_training_2025_01_14__15_14_embedding3d_rdkit_pos/checkpoints/rate_9.pt'
+
+  #在unimol的基础上训练
+  #pdbbind_random: 'test_premodel/CM_equiformer_continue_50_interaction_dim8_epoch86/85.pt'
+  
+  # DDPM+EGNN
+  #pdbbind_random: 'test_premodel/DDPM_EGNN_3.5/final.pt'
+
+
+
+  #equiformer最新的训练
+  #pdbbind_random: '/mnt/home/fanzhiguang/47/new_KGDiff-EcDock/logs_diffusion/CM_equiformer_continue_50_interaction_all_dim8_layer8/final.pt'
+
+  #flex equiformer
+  #pdbbind_random: '/mnt/home/fanzhiguang/47/new_KGDiff-EcDock/logs_diffusion/flex_Equiformer/41.pt'
+
+  # CM + ECSN,
+  #有信息泄露的
+  #pdbbind_random: '/mnt/home/fanzhiguang/47/new_KGDiff-EcDock/logs_diffusion/CM_escn_continue_50_interaction_dim8_epoch75/checkpoints/final.pt'
+
+  #pdbbind_random: '/mnt/home/fanzhiguang/47/new_KGDiff-EcDock/logs_diffusion/CM_escn_continue_50_interaction_centor10ai_dim16/final.pt'
+
+  #DDPM + EGNN
+  #pdbbind_random: '/mnt/home/fanzhiguang/47/new_KGDiff-EcDock/logs_diffusion/DDPM_egnn_skip_50step_training_2024_07_02__12_51_05/checkpoints/final.pt'
+
+
+
+sample:
+  seed: 2021
+  num_samples: 40
+  num_steps: 5000
+  pos_only: False
+  center_pos_mode: protein
+  sample_num_atoms: ref #默认是prior
+
+

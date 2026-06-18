@@ -1,0 +1,10 @@
+{
+    "editor.defaultFormatter": "ms-python.vscode-pylance",
+    "notebook.defaultFormatter": "ms-python.vscode-pylance",
+    "python.analysis.supportAllPythonDocuments": true,
+    "editor.renderLineHighlight": "line",
+    "python.languageServer": "Pylance",
+    "python.analysis.languageServerMode": "light",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "editor.semanticHighlighting.enabled": true
+}

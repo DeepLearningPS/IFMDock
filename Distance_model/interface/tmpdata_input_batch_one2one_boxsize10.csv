@@ -1,0 +1,3 @@
+input_protein,input_ligand,input_docking_grid,output_ligand_name,output_ligand_dir2
+/data/fan_zg/MDocking/new_Github-ECDock/tmpdata/tmpdata/5SD5/5SD5_protein_256.pdb,/data/fan_zg/MDocking/new_Github-ECDock/tmpdata/tmpdata/5SD5/5SD5_ligand.sdf,/data/fan_zg/MDocking/new_Github-ECDock/tmpdata/tmpdata/5SD5/5SD5_ligand_docking_grid_boxsize10.json,5SD5,tmpdata_predict_sdf_boxsize10/5SD5
+/data/fan_zg/MDocking/new_Github-ECDock/tmpdata/tmpdata/5SB2/5SB2_protein_256.pdb,/data/fan_zg/MDocking/new_Github-ECDock/tmpdata/tmpdata/5SB2/5SB2_ligand.sdf,/data/fan_zg/MDocking/new_Github-ECDock/tmpdata/tmpdata/5SB2/5SB2_ligand_docking_grid_boxsize10.json,5SB2,tmpdata_predict_sdf_boxsize10/5SB2

@@ -1,0 +1,80 @@
+{
+    "1": [
+        "rate, rate_min, rate_mean, rmsd_mean, rmsd_std, rsmd_mid, rmsd_max, rmsd_min:",
+        [
+            1.0,
+            1.0,
+            1.0,
+            1.0142,
+            0.0,
+            1.0142,
+            1.0142,
+            1.0142
+        ]
+    ],
+    "3": [
+        "rate, rate_min, rate_mean, rmsd_mean, rmsd_std, rsmd_mid, rmsd_max, rmsd_min:",
+        [
+            1.0,
+            1.0,
+            1.0,
+            1.1177,
+            0.133,
+            1.0808,
+            1.2956,
+            0.9768
+        ]
+    ],
+    "5": [
+        "rate, rate_min, rate_mean, rmsd_mean, rmsd_std, rsmd_mid, rmsd_max, rmsd_min:",
+        [
+            1.0,
+            1.0,
+            1.0,
+            1.1488,
+            0.1572,
+            1.0808,
+            1.3617,
+            0.9468
+        ]
+    ],
+    "10": [
+        "rate, rate_min, rate_mean, rmsd_mean, rmsd_std, rsmd_mid, rmsd_max, rmsd_min:",
+        [
+            1.0,
+            1.0,
+            1.0,
+            1.1488,
+            0.1572,
+            1.0808,
+            1.3617,
+            0.9468
+        ]
+    ],
+    "25": [
+        "rate, rate_min, rate_mean, rmsd_mean, rmsd_std, rsmd_mid, rmsd_max, rmsd_min:",
+        [
+            1.0,
+            1.0,
+            1.0,
+            1.1488,
+            0.1572,
+            1.0808,
+            1.3617,
+            0.9468
+        ]
+    ],
+    "40": [
+        "rate, rate_min, rate_mean, rmsd_mean, rmsd_std, rsmd_mid, rmsd_max, rmsd_min:",
+        [
+            1.0,
+            1.0,
+            1.0,
+            1.1488,
+            0.1572,
+            1.0808,
+            1.3617,
+            0.9468
+        ]
+    ]
+}

@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: unicore
+Version: 0.1
+Summary: unicore packages
+Author: Zhiguang Fan
+License: MIT
+Dynamic: author
+Dynamic: license
+Dynamic: summary
