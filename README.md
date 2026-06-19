@@ -8,7 +8,7 @@
 
 
 <h2 align="center">
-  <img align="center"  src="FECDock_frame2.png" alt="...">
+  <img align="center"  src="frame.png" alt="...">
 </h2>
 
 
