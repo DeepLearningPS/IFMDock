@@ -1,0 +1,227 @@
+seed: 42
+log_dir: ./workdir
+run_name: ifmdock_stage2
+restart_ckpt: null
+init_model_ckpt: null
+preserve_init_checkpoint_epoch: false
+strategy:
+  type: auto
+  init_sync: true
+  timeout_minutes: 10
+  find_unused_parameters: true
+trainer:
+  accelerator: gpu
+  devices: 1
+  num_nodes: 1
+  max_epochs: 40
+  accumulate_grad_batches: 1
+  num_sanity_val_steps: 0
+  log_every_n_steps: 20
+  enable_progress_bar: true
+  gradient_clip_val: 10.0
+data:
+  task: docking
+  dataset: rigid_pocket
+  cache_path: data/cache
+  split_train: data/splits/train.txt
+  split_val: data/splits/val.txt
+  interaction_cache_root: data/pdbbind
+  stage2_initial_pose_root: ./workdir/
+  batch_size: 32
+  num_workers: 1
+  num_dataloader_workers: 4
+  pin_memory: true
+  dataloader_drop_last: true
+  multiplicity: 1
+  limit_complexes: 0
+  run_val_inference: false
+  exclude_complexes:
+  - 2r1w
+  stage2_pose_manifest: ./workdir/
+  hard_overlap_sampling: false
+  hard_overlap_cache: null
+  preload_to_memory: false
+transforms:
+  cartesian_flow: true
+  rigid_pocket: true
+  flexible_backbone: false
+  flexible_sidechains: false
+  fast_updates: true
+  ligand:
+    no_torsion: false
+  protein:
+    sidechain_tor_bridge: false
+    use_bb_orientation_feats: false
+  pocket:
+    pocket_reduction: false
+    pocket_buffer: 0.0
+    pocket_radius: 5.0
+    all_atoms: true
+  unbalanced:
+    match_max_rmsd: null
+  nearby_atoms:
+    only_nearby_residues_atomic: false
+    nearby_residues_atomic_radius: 3.5
+    nearby_residues_atomic_min: 1
+  time_args:
+    sampling_alpha: 1.0
+    sampling_beta: 1.0
+    bb_tr_bridge_alpha: null
+    bb_rot_bridge_alpha: null
+    sc_tor_bridge_alpha: null
+  sigma_args:
+    tr_sigma_min: 0.1
+    tr_sigma_max: 30.0
+    rot_sigma_min: 0.1
+    rot_sigma_max: 1.65
+    tor_sigma_min: 0.0314
+    tor_sigma_max: 3.14
+    bb_tr_sigma: null
+    bb_rot_sigma: null
+    sidechain_tor_sigma: null
+  bb_prior: {}
+model:
+  type: AAScoreModel
+  cartesian_refinement: true
+  esm_embeddings_path: null
+  all_atoms: true
+  in_lig_edge_features: 4
+  embedding_type: sinusoidal
+  sigma_embed_dim: 64
+  embedding_scale: 1000
+  no_torsion: false
+  max_radius: 5.0
+  use_ligand_radius_edges: true
+  deduplicate_edge_unions: false
+  mark_edge_intersections: false
+  factorized_cross_edge_types: false
+  cross_type_fusion_before_mlp: false
+  scale_by_sigma: false
+  sh_lmax: 1
+  distance_embed_dim: 64
+  cross_distance_embed_dim: 64
+  dropout: 0.1
+  use_second_order_repr: false
+  cross_max_distance: 80.0
+  dynamic_max_cross: false
+  separate_noise_schedule: false
+  smooth_edges: false
+  odd_parity: false
+  not_fixed_center_conv: false
+  no_aminoacid_identities: false
+  flexible_sidechains: false
+  flexible_backbone: false
+  receptor_radius: 15.0
+  c_alpha_max_neighbors: 24
+  atom_radius: 5.0
+  atom_max_neighbors: 12
+  sidechain_tor_bridge: false
+  use_bb_orientation_feats: false
+  only_nearby_residues_atomic: false
+  activation_func: ReLU
+  clamped_norm_min: 0.0
+  no_batch_norm: false
+  norm_type: layer_norm
+  norm_affine: true
+  nv: 2
+  ns: 32
+  num_conv_layers: 6
+  distance_guidance:
+    enabled: true
+    source: ecdock_cache
+    cutoff: 4.5
+    split_distance: 3.5
+    extension_distance: 2.0
+    use_extension_edges: false
+    cached_top_n_per_ligand: null
+    cached_shell_top_n_per_ligand: null
+    cached_outer_cutoff: 5.5
+    cached_outer_top_n_per_ligand: 1
+    recycling: 4
+    update_parameters: false
+    use_atom_edges: true
+    use_residue_edges: false
+    include_ifmdock_atom_edges: true
+    include_ifmdock_residue_edges: false
+    cached_candidate_selection: random
+    require_explicit_index_mapping: true
+sigma:
+  tr_sigma_min: 0.1
+  tr_sigma_max: 30.0
+  rot_sigma_min: 0.1
+  rot_sigma_max: 1.65
+  tor_sigma_min: 0.0314
+  tor_sigma_max: 3.14
+  bb_tr_sigma: null
+  bb_rot_sigma: null
+  sidechain_tor_sigma: null
+sampler:
+  inference_steps: 15
+  sampling_alpha: 1.0
+  sampling_beta: 1.0
+  bb_tr_bridge_alpha: null
+  bb_rot_bridge_alpha: null
+  sc_tor_bridge_alpha: null
+  no_torsion: false
+  sidechain_tor_bridge: false
+  flexible_backbone: false
+  flexible_sidechains: false
+  all_atoms: true
+  sigma:
+    tr_sigma_min: 0.1
+    tr_sigma_max: 30.0
+    rot_sigma_min: 0.1
+    rot_sigma_max: 1.65
+    tor_sigma_min: 0.0314
+    tor_sigma_max: 3.14
+    bb_tr_sigma: null
+    bb_rot_sigma: null
+    sidechain_tor_sigma: null
+loss:
+  tr_weight: 1.0
+  rot_weight: 1.0
+  tor_weight: 1.0
+  bb_tr_weight: 0.0
+  bb_rot_weight: 0.0
+  sc_tor_weight: 0.0
+  flexible_backbone: false
+  flexible_sidechains: false
+  no_torsion: false
+  lig_transform_type: flow
+  use_new_pipeline: false
+physical_loss:
+  enabled: true
+  bond_weight: 1.0
+  angle_weight: 1.0
+  steric_weight: 1.0
+  overlap_weight: 1.0
+  geometry_buffer: 0.25
+  steric_buffer: 0.2
+  overlap_buffer: 0.75
+  overlap_reduction: linear
+  time_weighting: none
+training:
+  adamw: true
+  lr: 0.0002
+  scheduler: null
+  scheduler_patience: 20
+  w_decay: 1.0e-06
+  skip_nan_grad_updates: false
+  check_nan_grads: false
+  except_on_nan_grads: false
+  check_unused_params: false
+  ema_rate: 0.999
+  use_ema: true
+  val_inference_freq: null
+  inference_earlystop_metric: valinf_rmsds_lt2
+  inference_earlystop_goal: max
+logger:
+  wandb: false
+callbacks:
+  flexible_backbone: false
+  flexible_sidechains: false
+  val_inference_freq: null
+  inference_earlystop_goal: max
+  inference_earlystop_metric: valinf_rmsds_lt2
+  wandb: false
+  loss_plot_every_n_epochs: 10

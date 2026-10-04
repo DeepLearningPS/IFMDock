@@ -1,0 +1,2 @@
+from .generalmodels_predictor import GeneralMolPredictor
+from .processor import Processor
