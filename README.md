@@ -97,4 +97,4 @@ The protein may be a prepared pocket PDB. The CSV contains a score for each pose
 
 ## License
 
-See `LICENSE` for IFMDock. The included scoring and distance-model components retain their respective license notices.
+See `LICENSE` for IFMDock.
