@@ -1,5 +1,5 @@
 <h1 align="center">
-   MPFDock
+   IFMDock
 </h1>
 
 <h4 align="center">Equivariant Flow Matching for Molecular Docking Guided by Ligand–Protein Interactions
