@@ -95,6 +95,16 @@ python IFMScore/score.py \
 
 The protein may be a prepared pocket PDB. The CSV contains a score for each pose; higher scores rank first.
 
+## Evaluation metrics
+
+```bash
+python scripts/evaluation/benchmark_metrics.py output --posebusters --geometry-jsd > metrics.json
+```
+
+RMSD is calculated on heavy atoms in the protein coordinate frame, taking the lowest value over matching ligand atom symmetries without aligning the generated pose to the crystal. Top-1 is the first IFMScore-ranked pose; Best-1 is the pose with the lowest RMSD. Their success rates are the fractions of complexes with RMSD ≤ 2 Å. **MRSR** is the fraction of complexes whose *mean RMSD across generated poses* is ≤ 2 Å. **PB-Valid** requires all PoseBusters docking checks to pass for the selected pose; the script also reports the joint RMSD-success and PB-Valid rates.
+
+The optional geometry JSD compares the Top-1 generated and crystal distributions of bond lengths, bond angles and dihedral angles. Values are pooled by local chemical type across complexes, estimated with a Gaussian KDE on a shared grid, and compared using SciPy's Jensen–Shannon **distance** (the square root of mathematical JS divergence).
+
 ## License
 
 See `LICENSE` for IFMDock.
